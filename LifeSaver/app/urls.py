@@ -10,5 +10,5 @@ urlpatterns = [
     path('map', map, name="map"),
     path('help', help, name="help"),
     path('victimSignup', VictimSignup, name="victimSignup"),
-    path('login', VictimLogin, name="victimLogin"),
+    path('victimLogin', VictimLogin, name="victimLogin"),
 ]

@@ -6,7 +6,6 @@ import pandas as pd
 from .forms import CustomUserLoginForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, get_object_or_404, redirect
-
 # Create your views here.
 
 def index(request):
@@ -23,7 +22,7 @@ def index(request):
     #
     #         hospital = Hospitals.objects.create(name=name, latitude=lat, longitude=long)
 
-    return render(request, "app/dashboard.html", {})
+    return render(request, "app/landingPage.html", {})
 
 def notifications(request):
     return render(request, "app/notifications.html", {})
@@ -52,8 +51,8 @@ def VictimSignup(request):
             victim = victim_form.save(commit=False)
             victim.user = user
             victim.photo = request.FILES['photo']
-            victim.latitude = request.POST.get("lat")
-            victim.longitude = request.POST.get("lng")
+            victim.latitude = request.POST.get("lat");
+            victim.longitude = request.POST.get("lng");
             victim.save()
             return render(request, "app/victimSignup.html", context)
         return render(request, "app/victimSignup.html", context)
@@ -83,4 +82,3 @@ def VictimLogin(request):
         "user": user,
     }
     return render(request, "app/victimLogin.html", context)
-
