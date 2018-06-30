@@ -5,11 +5,14 @@ from django.shortcuts import render
 def index(request):
     return render(request, "app/dashboard.html", {})
 
-def users(request):
+def notifications(request):
+    return render(request, "app/notifications.html", {})
 
+def user(request):
     return render(request, "app/user.html", {})
 
+def map(request):
+    return render(request, "app/map.html", {})
 
-def maps(request):
-
-    return render(request, "app/maps.html", {})
+def help(request):
+    return render(request, "app/help.html", {})
