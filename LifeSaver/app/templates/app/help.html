@@ -9,9 +9,11 @@
   <title>
     Life Saver
   </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
+  />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+  />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../../static/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
@@ -46,24 +48,12 @@
               <p>User Profile</p>
             </a>
           </li>
-           <li class="nav-item active">
+          <li class="nav-item active">
             <a class="nav-link" href="{% url 'app:help' %}">
               <i class="material-icons">help</i>
               <p>Help</p>
             </a>
           </li>
-          <!--<li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
-          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'app:map' %}">
               <i class="material-icons">location_ons</i>
@@ -73,15 +63,9 @@
           <li class="nav-item ">
             <a class="nav-link" href="{% url 'app:notifications' %}">
               <i class="material-icons">notifications</i>
-              <p>notifications</p>
+              <p>Notifications</p>
             </a>
           </li>
-          <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
         </ul>
       </div>
     </div>
@@ -90,9 +74,10 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">Map</a>
+            <a class="navbar-brand" href="#pablo">Help</a>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -146,7 +131,337 @@
         </div>
       </nav>
       <!-- End Navbar -->
-      <div id="map"></div>
+
+      <div class="content">
+        <div class="container-fluid">
+          <div id="initialHelpDisplay" class="card">
+            <div class="card-header card-header-primary text-center">
+              <h3 class="card-title">Do you need help or want to help</h3>
+            </div>
+            <div class="col-md-12" style="margin-top: 20px;">
+              <div class="places-buttons">
+                <div class="row">
+                  <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button class="btn btn-primary btn-block" onclick="demo.showNeedsHelp()">I need help</button>
+                      </div>
+                      <div class="col-md-6">
+                        <button class="btn btn-primary btn-block" onclick="demo.showWantsToHelp()">I want to help</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="needsHelp" style="display: none">
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header card-header-primary">
+                        <h4 class="card-title ">NGO</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead class=" text-primary">
+                              <th>
+                                ID
+                              </th>
+                              <th>
+                                Name
+                              </th>
+                              <th>
+                                Country
+                              </th>
+                              <th>
+                                City
+                              </th>
+                              <th>
+                                Salary
+                              </th>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  1
+                                </td>
+                                <td>
+                                  Dakota Rice
+                                </td>
+                                <td>
+                                  Niger
+                                </td>
+                                <td>
+                                  Oud-Turnhout
+                                </td>
+                                <td class="text-primary">
+                                  $36,738
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  2
+                                </td>
+                                <td>
+                                  Minerva Hooper
+                                </td>
+                                <td>
+                                  Curaçao
+                                </td>
+                                <td>
+                                  Sinaai-Waas
+                                </td>
+                                <td class="text-primary">
+                                  $23,789
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  3
+                                </td>
+                                <td>
+                                  Sage Rodriguez
+                                </td>
+                                <td>
+                                  Netherlands
+                                </td>
+                                <td>
+                                  Baileux
+                                </td>
+                                <td class="text-primary">
+                                  $56,142
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  4
+                                </td>
+                                <td>
+                                  Philip Chaney
+                                </td>
+                                <td>
+                                  Korea, South
+                                </td>
+                                <td>
+                                  Overland Park
+                                </td>
+                                <td class="text-primary">
+                                  $38,735
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  5
+                                </td>
+                                <td>
+                                  Doris Greene
+                                </td>
+                                <td>
+                                  Malawi
+                                </td>
+                                <td>
+                                  Feldkirchen in Kärnten
+                                </td>
+                                <td class="text-primary">
+                                  $63,542
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  6
+                                </td>
+                                <td>
+                                  Mason Porter
+                                </td>
+                                <td>
+                                  Chile
+                                </td>
+                                <td>
+                                  Gloucester
+                                </td>
+                                <td class="text-primary">
+                                  $78,615
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-header card-header-primary">
+                          <h4 class="card-title ">People</h4>
+                        </div>
+                        <div class="card-body">
+                          <div class="table-responsive">
+                            <table class="table">
+                              <thead class=" text-primary">
+                                <th>
+                                  ID
+                                </th>
+                                <th>
+                                  Name
+                                </th>
+                                <th>
+                                  Country
+                                </th>
+                                <th>
+                                  City
+                                </th>
+                                <th>
+                                  Salary
+                                </th>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    1
+                                  </td>
+                                  <td>
+                                    Dakota Rice
+                                  </td>
+                                  <td>
+                                    Niger
+                                  </td>
+                                  <td>
+                                    Oud-Turnhout
+                                  </td>
+                                  <td class="text-primary">
+                                    $36,738
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    2
+                                  </td>
+                                  <td>
+                                    Minerva Hooper
+                                  </td>
+                                  <td>
+                                    Curaçao
+                                  </td>
+                                  <td>
+                                    Sinaai-Waas
+                                  </td>
+                                  <td class="text-primary">
+                                    $23,789
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    3
+                                  </td>
+                                  <td>
+                                    Sage Rodriguez
+                                  </td>
+                                  <td>
+                                    Netherlands
+                                  </td>
+                                  <td>
+                                    Baileux
+                                  </td>
+                                  <td class="text-primary">
+                                    $56,142
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    4
+                                  </td>
+                                  <td>
+                                    Philip Chaney
+                                  </td>
+                                  <td>
+                                    Korea, South
+                                  </td>
+                                  <td>
+                                    Overland Park
+                                  </td>
+                                  <td class="text-primary">
+                                    $38,735
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    5
+                                  </td>
+                                  <td>
+                                    Doris Greene
+                                  </td>
+                                  <td>
+                                    Malawi
+                                  </td>
+                                  <td>
+                                    Feldkirchen in Kärnten
+                                  </td>
+                                  <td class="text-primary">
+                                    $63,542
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    6
+                                  </td>
+                                  <td>
+                                    Mason Porter
+                                  </td>
+                                  <td>
+                                    Chile
+                                  </td>
+                                  <td>
+                                    Gloucester
+                                  </td>
+                                  <td class="text-primary">
+                                    $78,615
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div id="wantsToHelp" style="display: none" class="card">
+              <div class="col-md-12">
+                <div class="places-buttons">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+                      <div class="row"  style="margin-top: 20px;">
+                        <div class="col-md-12">
+                          <button class="btn btn-primary btn-block">Food</button>
+                        </div>
+                        <div class="col-md-12">
+                          <button class="btn btn-primary btn-block">Shelter</button>
+                        </div>
+                        <div class="col-md-12">
+                          <button class="btn btn-primary btn-block">Donate Blood</button>
+                        </div>
+                        <div class="col-md-12">
+                          <button class="btn btn-primary btn-block">Offer Medical Assistance</button>
+                        </div>
+                        <div class="col-md-12">
+                          <button class="btn btn-primary btn-block">Crowd Funding</button>
+                        </div>
+                        <div class="col-md-12">
+                          <button class="btn btn-primary btn-block">Offer Child Care</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+      </div>
+
+      <!-- <div id="map"></div> -->
     </div>
   </div>
   <!--   Core JS Files   -->
@@ -165,7 +480,7 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../../static/demo/demo.js"></script>
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       // Javascript method's body can be found in static/js/demos.js
       demo.initGoogleMaps();
     });

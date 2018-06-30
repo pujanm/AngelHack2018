@@ -263,22 +263,44 @@ demo = {
   },
 
   showNotification: function(from, align) {
-    type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
+    // type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
 
-    color = Math.floor((Math.random() * 6) + 1);
+    // color = Math.floor((Math.random() * 6) + 1);
 
-    $.notify({
-      icon: "add_alert",
-      message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
+    // $.notify({
+    //   icon: "add_alert",
+    //   message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
 
-    }, {
-      type: type[color],
-      timer: 3000,
-      placement: {
-        from: from,
-        align: align
-      }
-    });
+    // }, {
+    //   type: type[color],
+    //   timer: 3000,
+    //   placement: {
+    //     from: from,
+    //     align: align
+    //   }
+    // });    
+  },
+
+  showNeedsHelp: function(){
+    document.getElementById("wantsToHelp").style.display = "none";
+    document.getElementById("initialHelpDisplay").style.display = "none";
+    var needsHelp = document.getElementById("needsHelp");
+    if (needsHelp.style.display === "none") {
+      needsHelp.style.display = "block";
+    } else {
+      needsHelp.style.display = "none";
+    }
+  },
+
+  showWantsToHelp: function(){
+    document.getElementById("needsHelp").style.display = "none";
+    document.getElementById("initialHelpDisplay").style.display = "none";
+    var wantsToHelp = document.getElementById("wantsToHelp");
+    if (wantsToHelp.style.display === "none") {
+      wantsToHelp.style.display = "block";
+    } else {
+      wantsToHelp.style.display = "none";
+    }
   }
 
 }
