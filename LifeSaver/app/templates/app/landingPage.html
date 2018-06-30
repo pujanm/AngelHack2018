@@ -96,7 +96,6 @@
                 // Browser doesn't support Geolocation
             }
 
-
             // var marker = new google.maps.Marker({
             //   position: myLatlng,
             //   title: "Hello World!"
@@ -104,6 +103,55 @@
             //
             // // To add the marker to the map, call setMap();
             // marker.setMap(map);
+            var infowindow = new google.maps.InfoWindow({
+              content: '<div>' + '{% if user.is_authenticated %}' +'<a href="">' + '{% else %}' + '<a href="victimLogin">' + '{% endif %}' + '<button class="btn btn-info">' +
+            'Report this disaster</a></div>' + '</button>' + '<div>' + '{% if user.is_authenticated %}' +'<a href="help">' + '{% else %}' + '<a href="victimLogin">' + '{% endif %}' + '<button class="btn btn-info">' +
+            'I want to help</a></div>' + '</button>' + '<div>' + '{% if user.is_authenticated %}' +'<a href="help">' + '{% else %}' + '<a href="victimLogin">' + '{% endif %}' + '<button class="btn btn-info">' +
+            'I want to get help</a></div>' + '</button>'
+            });
+            markers_on_map = [ ];
+            content_on_markers = [ ];
+            var marker_lat_lng = new google.maps.LatLng(18.919334,72.819383);
+            var new_marker = new google.maps.Marker({
+              position: marker_lat_lng,
+              map: map,
+              title: 'Famine'
+            });
+            // new_marker.addListener('click', function() {
+            //    infowindow.open(map, new_marker);
+            // })
+            // new_marker.setMap(map);
+            markers_on_map.push(new_marker);
+            // content_on_markers.push(new_marker.addListener('click', function() {
+            //   infowindow.open(map, marker);
+            // }));
+            var marker_lat_lng = new google.maps.LatLng(18.916334,72.816383);
+            var new_marker = new google.maps.Marker({
+              position: marker_lat_lng,
+              map: map,
+              title: 'Earthquake'
+            });
+            markers_on_map.push(new_marker);
+            // content_on_markers.push(new_marker.addListener('click', function() {
+            //   infowindow.open(map, marker);
+            // }));
+            var marker_lat_lng = new google.maps.LatLng(18.913334,72.813383);
+            var new_marker = new google.maps.Marker({
+              position: marker_lat_lng,
+              map: map,
+              title: 'Flood',
+            });
+            markers_on_map.push(new_marker);
+            // content_on_markers.push(new_marker.addListener('click', function() {
+            //   infowindow.open(map, marker);
+            // }));
+            markers_on_map.forEach(function(m){
+                m.addListener('click', function() {
+                  infowindow.open(map, m);
+                })
+              m.setMap(map);
+
+            });
 
         }
     </script>

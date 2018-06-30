@@ -278,22 +278,20 @@ demo = {
     //     from: from,
     //     align: align
     //   }
-    // });    
+    // });
   },
 
-  showNeedsHelp: function(){
-    document.getElementById("wantsToHelp").style.display = "none";
-    document.getElementById("initialHelpDisplay").style.display = "none";
-    var needsHelp = document.getElementById("needsHelp");
-    if (needsHelp.style.display === "none") {
-      needsHelp.style.display = "block";
-    } else {
-      needsHelp.style.display = "none";
-    }
-  },
+  // showNeedsHelp: function(){
+  //   document.getElementById("initialHelpDisplay").style.display = "none";
+  //   var needsHelp = document.getElementById("needsHelp");
+  //   if (needsHelp.style.display === "none") {
+  //     needsHelp.style.display = "block";
+  //   } else {
+  //     needsHelp.style.display = "none";
+  //   }
+  // },
 
   showWantsToHelp: function(){
-    document.getElementById("needsHelp").style.display = "none";
     document.getElementById("initialHelpDisplay").style.display = "none";
     var wantsToHelp = document.getElementById("wantsToHelp");
     if (wantsToHelp.style.display === "none") {

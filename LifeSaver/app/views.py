@@ -8,6 +8,8 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
 
+victim = False
+
 def index(request):
     # df = pd.read_csv("hospital_directory.csv", low_memory=False)
     # mumbai_hosp = df.loc[(df["District"] == "Mumbai") & (pd.notnull(df["Location_Coordinates"]) & (df["Location_Coordinates"] != "Error"))]
@@ -22,24 +24,39 @@ def index(request):
     #
     #         hospital = Hospitals.objects.create(name=name, latitude=lat, longitude=long)
 
-    return render(request, "app/landingPage.html", {})
+    user = request.user
+    context = {'user': user}
+    return render(request, "app/landingPage.html", context)
 
 def notifications(request):
-    return render(request, "app/notifications.html", {})
+    global victim
+    return render(request, "app/notifications.html", {"victim":victim})
 
 def user(request):
-    return render(request, "app/user.html", {})
+    global victim
+    return render(request, "app/user.html", {"victim":victim})
 
 def map(request):
-    return render(request, "app/map.html", {"hi":"bye"})
+    global victim
+    return render(request, "app/map.html", {"victim":victim})
 
 def help(request):
-    return render(request, "app/help.html", {})
+    global victim
+    user = request.user
+    victim = Victim.objects.get(user=user).help_required
+    if user:
+        context = {'user': user, "victim":victim}
+    else:
+        context = {"victim":victim}
+    return render(request, "app/help.html", context)
 
 def VictimSignup(request):
+    global victim
+    user = request.user
     context = {
         'signupForm': VictimForm,
         'userForm': UserForm,
+        "victim":victim
     }
     if request.method == 'POST':
         user_form = UserForm(request.POST)
@@ -61,6 +78,7 @@ def VictimSignup(request):
 
 
 def VictimLogin(request):
+    global victim
     user = request.user
     print("Before request method")
     if request.method == 'POST':
@@ -80,5 +98,60 @@ def VictimLogin(request):
     context = {
         "form": form,
         "user": user,
+        "victim":victim
     }
     return render(request, "app/victimLogin.html", context)
+
+def help_food(request):
+    user = request.user
+
+    person = Victim.objects.get(user=user)
+
+    if person.help_required == False:
+        person.type_of_help = 'Food'
+        person.save()
+
+    return redirect('app:help')
+
+def help_shelter(request):
+    user = request.user
+
+    person = Victim.objects.get(user=user)
+
+    if person.help_required == False:
+        person.type_of_help = 'Shelter'
+        person.save()
+
+    return redirect('app:help')
+
+def help_funding(request):
+    user = request.user
+
+    person = Victim.objects.get(user=user)
+
+    if person.help_required == False:
+        person.type_of_help = 'Crowdfunding'
+        person.save()
+
+    return redirect('app:help')
+
+def needsHelp(request):
+    global victim
+    user = request.user
+    victim = Victim.objects.get(user=user)
+    victim.help_required = True
+    victim.save()
+    victim = True
+    context = {"victim": victim}
+    return render(request, "app/need-help.html", context)
+
+def notVictim(request):
+    global victim
+    user = request.user
+    victim = Victim.objects.get(user=user)
+    victim.help_required = False
+    victim.save()
+    victim = False
+
+    context = {"victim": victim}
+    return render(request, "app/help.html", context)
