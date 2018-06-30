@@ -3,6 +3,9 @@ from .forms import VictimForm, UserForm
 from django.contrib.auth.models import User
 from .models import Victim
 import pandas as pd
+from .forms import CustomUserLoginForm
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 
@@ -49,10 +52,35 @@ def VictimSignup(request):
             victim = victim_form.save(commit=False)
             victim.user = user
             victim.photo = request.FILES['photo']
-            victim.latitude = request.POST.get("lat");
-            victim.longitude = request.POST.get("lng");
+            victim.latitude = request.POST.get("lat")
+            victim.longitude = request.POST.get("lng")
             victim.save()
             return render(request, "app/victimSignup.html", context)
         return render(request, "app/victimSignup.html", context)
             # login(request, authenticate(username=username, password=raw_password))
     return render(request, "app/victimSignup.html", context)
+
+
+def VictimLogin(request):
+    user = request.user
+    print("Before request method")
+    if request.method == 'POST':
+        form = CustomUserLoginForm(request.POST)
+        print("Before form valid")
+
+        username = request.POST['username']
+        password = request.POST['password']
+        print("Before authentication")
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        print("After authentication")
+        return redirect('app:index')
+    else:
+        form = CustomUserLoginForm()
+
+    context = {
+        "form": form,
+        "user": user,
+    }
+    return render(request, "app/victimLogin.html", context)
+
