@@ -1,4 +1,7 @@
 from django.contrib import admin
-from .models import HelperUser
+from .models import Victim, HospitalUser, Hospitals, Disaster
 # Register your models here.
-admin.site.register(HelperUser)
+admin.site.register(Victim)
+admin.site.register(HospitalUser)
+admin.site.register(Disaster)
+admin.site.register(Hospitals)
