@@ -1,0 +1,25 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7i1Xt81SPU4iq-Y-g4Z5WRj6bXvBvjqg&callback=myMap"></script>
+<script src="../../static/demo/geofence.js" type="text/javascript">
+         google.load("maps", "3",{other_params:"sensor=false&libraries=geometry"});
+      //   function myMap() {
+      //   var mapProp= {
+      //       center:new google.maps.LatLng(19.0084743,72.8246082),
+      //       zoom:14,
+      //   };
+      //   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      // }
+</script>
+
+<body style="margin:0px; padding:0px;" >
+
+ <select id="radius_km">
+	 <option value=1>1km</option>
+	 <option value=2>2km</option>
+	 <option value=5>5km</option>
+	 <option value=30>30km</option>
+ </select>
+ <div id="map_canvas"  style="width:500px; height:300px;">
+</body>
